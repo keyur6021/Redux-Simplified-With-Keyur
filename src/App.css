@@ -1,3 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* //! api page css */
+
 .header {
   text-align: center;
   font-size: 72px;
