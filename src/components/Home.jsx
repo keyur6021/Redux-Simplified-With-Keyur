@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPosts, postData } from '../store/actions/testAction';
 import User from './User';
+import { allProduct } from '../store/actions/productAction';
 
 const Home = () => {
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getAllPosts())
     }, [])

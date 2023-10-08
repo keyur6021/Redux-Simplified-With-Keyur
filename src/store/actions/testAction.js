@@ -1,7 +1,7 @@
 // all types declare here
 
-const DO_THIS = "DO_THIS";
-const NEW_POST_THIS = "NEW_POST_THIS";
+export const DO_THIS = "DO_THIS";
+export const NEW_POST_THIS = "NEW_POST_THIS";
 
 
 export const getAllPosts = () => {

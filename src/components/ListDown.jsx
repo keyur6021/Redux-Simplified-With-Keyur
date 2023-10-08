@@ -64,7 +64,7 @@ const ListDown = ({ product }) => {
                             <span
                                 style={{ color: "blue", paddingRight: "2px", fontWeight: 600 }}
                             >
-                                {product?.rating?.rate}
+                                {product?.rating?.rate || 0}
                             </span>
                             /
                             <span
@@ -74,7 +74,7 @@ const ListDown = ({ product }) => {
                                     fontWeight: 600,
                                 }}
                             >
-                                {product?.rating?.count}
+                                {product?.rating?.count || 100}
                             </span>
                         </div>
                     </div>

@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import { Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { FaShoppingCart } from 'react-icons/fa';
+import { addProduct } from "../store/actions/productAction";
+import { useDispatch } from "react-redux";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 // ! future use
-// const validationSearch = Yup.object().shape({
-//   email: Yup.string().email("Invalid email").required("Required"),
-//   password: Yup.string().required("password is required"),
-// });
+const validationSearch = Yup.object().shape({
+    title: Yup.string().required("Title is Required"),
+    description: Yup.string().required("Description is required"),
+});
 
 const FileForm = () => {
     const [file, setFile] = useState(0);
     const [showImage, setShowImage] = useState();
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const getBase64 = async (file) => {
         const reader = new FileReader();
         const promise = new Promise((resolve, reject) => {
@@ -29,19 +35,22 @@ const FileForm = () => {
         const base64 = await getBase64(file);
         setFile(base64);
     };
-
+    console.log("file====", file)
     return (
         <div className="parent">
             <div className="parent-class">
                 <Formik
-                    initialValues={{ file: {} }}
-                    // validationSchema={validationSearch}
-                    onSubmit={(values, { setSubmitting, resetForm }) => {
-                        console.log("values===", values);
-                        setShowImage(values?.file)
-                        setTimeout(() => {
-                            navigate("/all")
-                        }, 1000);
+                    initialValues={{
+                        title: '',
+                        description: ''
+                    }}
+                    validationSchema={validationSearch}
+                    onSubmit={(values) => {
+                        const finalValues = { ...values, image: file };
+                        console.log("test---", finalValues)
+                        dispatch(addProduct(finalValues))
+                        toast.success('Product add successfully.')
+                        navigate('/all')
                     }}
                 >
                     {({
@@ -54,22 +63,42 @@ const FileForm = () => {
                         setFieldValue
                     }) => (
                         <Form onSubmit={handleSubmit}>
-                            <div style={{ fontSize: "30px", color: "blue", textAlign: 'center', padding: '1rem', textDecoration: 'underLine' }}>
-                                Add Product
+                            <div className="title-form">
+                                <FaShoppingCart />    Add Product
                             </div>
-                            <div style={{ padding: '1rem' }}>
+                            <div>
+                                <Field type="text"
+                                    className='common-field'
+                                    value={values.title}
+                                    onChange={handleChange}
+                                    name="title" placeholder="Enter the title" />
+                                <ErrorMessage name='title' >
+                                    {(msg) => <div className="error-msg">{msg}</div>}
+                                </ErrorMessage>
+                            </div>
+                            <div style={{ paddingTop: '15px' }}>
+                                <Field as="textarea" id="desc"
+                                    className='common-field'
+                                    value={values.description}
+                                    rows='5'
+                                    onChange={handleChange}
+                                    placeholder='Enter your description' name='description' />
+                                <ErrorMessage name='description' >
+                                    {(msg) => <div className="error-msg">{msg}</div>}
+                                </ErrorMessage>
+                            </div>
+                            <div style={{ paddingTop: '10px' }}>
                                 <input type="file" name="file" onChange={(e) => {
                                     OneHandleChange(e)
                                     // setFieldValue("file", e.currentTarget.files[0]);
                                 }}
-                                    style={{ border: '1px solid gray', padding: '10px', width: '100%' }} />
+                                    className="common-field"
+                                />
                             </div>
-
-                            <div style={{ textAlign: "center" }}>
-                                <Button variant="outlined" size="sm" type="submit">
+                            <div style={{ textAlign: "center", paddingTop: '15px' }}>
+                                <Button type="submit" className="btn-submit" sx={{ color: '#fff', border: '1px solid white', fontWeight: 700 }} variant="outlined" size="sm" >
                                     Submit
                                 </Button>
-                                <div style={{ color: 'red' }}> *Site is under-progress </div>
                             </div>
                         </Form>
                     )}
@@ -79,8 +108,9 @@ const FileForm = () => {
                         <img src={file} alt='new file' width={400} height={400} />
                     </div>
                 }
+                <Toaster />
             </div>
-        </div>
+        </div >
     );
 };
 
