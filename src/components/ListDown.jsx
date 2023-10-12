@@ -1,7 +1,6 @@
 import React from "react";
 
 const ListDown = ({ product }) => {
-    { console.log("product===", product?.image) }
     return (
         <React.Fragment>
             <div

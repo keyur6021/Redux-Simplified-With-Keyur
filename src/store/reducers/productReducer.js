@@ -6,7 +6,6 @@ const initialState = {
 }
 
 export const productReducer = (state = initialState, action) => {
-    console.log("payload====", action?.payload)
     switch (action.type) {
         case PRODUCT_ADD:
             return {

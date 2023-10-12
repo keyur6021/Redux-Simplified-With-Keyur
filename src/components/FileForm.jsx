@@ -15,7 +15,7 @@ const validationSearch = Yup.object().shape({
     description: Yup.string().required("Description is required"),
 });
 
-const FileForm = () => {
+const AddProductForm = () => {
     const [file, setFile] = useState(0);
     const [showImage, setShowImage] = useState();
     const navigate = useNavigate()
@@ -35,7 +35,6 @@ const FileForm = () => {
         const base64 = await getBase64(file);
         setFile(base64);
     };
-    console.log("file====", file)
     return (
         <div className="parent">
             <div className="parent-class">
@@ -47,7 +46,6 @@ const FileForm = () => {
                     validationSchema={validationSearch}
                     onSubmit={(values) => {
                         const finalValues = { ...values, image: file };
-                        console.log("test---", finalValues)
                         dispatch(addProduct(finalValues))
                         toast.success('Product add successfully.')
                         navigate('/all')
@@ -64,7 +62,7 @@ const FileForm = () => {
                     }) => (
                         <Form onSubmit={handleSubmit}>
                             <div className="title-form">
-                                <FaShoppingCart />    Add Product
+                                <FaShoppingCart className="avatar-product" />   Add Product
                             </div>
                             <div>
                                 <Field type="text"
@@ -114,4 +112,4 @@ const FileForm = () => {
     );
 };
 
-export default FileForm;
+export default AddProductForm;

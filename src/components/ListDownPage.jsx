@@ -6,14 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 const ListDownPage = () => {
     const [data, setData] = useState([]);
     const dispatch = useDispatch();
-    console.log("data", data)
     const listAllProduct = async () => {
         const response = await fetch("http://localhost:8080/productData")
         const responseData = await response.json()
         setData(responseData)
     };
     const productResponse = useSelector((state) => state?.products?.productsAll)
-    console.log("new====", productResponse)
     useEffect(() => {
         listAllProduct();
         dispatch(allProduct())
