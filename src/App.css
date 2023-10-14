@@ -129,7 +129,8 @@
 /* // home page */
 
 section {
-  height: 100vh;
+  /* height: calc(100vh); */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,22 +140,48 @@ section {
 
 .container {
   scroll-snap-type: y mandatory;
-  height: 90vh;
-  overflow-y: scroll;
+  height: calc(100vh - 9.2vh);
 }
 
-.one {
-  background-color: rgb(255, 154, 154);
+/* navbar logo animation */
+
+
+.waviy {
+  position: relative;
 }
 
-.two {
-  background-color: green;
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: 0.2s;
+  font-family: "Rammetto One", cursive;
 }
 
-.three {
-  background-color: blue;
+.k1 {
+  color: #d90a2c !important;
 }
 
-.four {
-  background-color: yellow;
+.kLast {
+  margin-left: 8px !important;
+  color: #d90a2c !important;
+}
+
+@keyframes flip {
+
+  0%,
+  80% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* //! navbar btn style */
+
+.comman-btn:hover {
+  color: red;
+  font-weight: 600;
 }

@@ -6,6 +6,7 @@ import ListDownPage from './components/ListDownPage';
 import AddProductForm from './components/FileForm';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/home" element={<Home />} />
           </Routes>
         </Suspense>
+        <Toaster />
       </Router>
     </div>
   );

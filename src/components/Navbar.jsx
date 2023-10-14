@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import { Link } from '@mui/material';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
@@ -25,39 +26,46 @@ function Navbar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1 }} />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Keyur with Redux
-                        </Typography>
+                        <Link href="/">
+                            <AdbIcon sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1, color: 'white' }} />
+                        </Link>
+                        <div className="logo">
+                            <div class="waviy">
+                                <span className="k1">K</span>
+                                <span className="--i:2">e</span>
+                                <span className="--i:3">y</span>
+                                <span className="--i:4">u</span>
+                                <span className="--i:5">r</span>
+                                <span className="--i:6">-</span>
+                                <span className="k1">w</span>
+                                <span className="--i:5">i</span>
+                                <span className="--i:5">t</span>
+                                <span className="--i:5">h</span>
+                                <span className="--i:5">-</span>
+                                <span className="k1">r</span>
+                                <span className="--i:5">e</span>
+                                <span className="--i:5">d</span>
+                                <span className="--i:5">u</span>
+                                <span className="--i:5">x</span>
+                            </div>
+                        </div>
                     </Box>
                     <Box>
                         <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <Button onClick={() => navigate('/product')}
+                            <Button className='comman-btn' onClick={() => navigate('/product')}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Products
-                            </Button> <Button onClick={() => navigate('/all')}
+                            </Button>
+                            <Button className='comman-btn' onClick={() => navigate('/all')}
+
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Lists
                             </Button>
-                            <Button
+                            <Button className='comman-btn' onClick={() => navigate('/home')}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Dummy

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from 'react-icons/fa';
 import { addProduct } from "../store/actions/productAction";
 import { useDispatch } from "react-redux";
-import toast, { Toaster } from 'react-hot-toast';
 
 
 // ! future use
@@ -47,7 +46,6 @@ const AddProductForm = () => {
                     onSubmit={(values) => {
                         const finalValues = { ...values, image: file };
                         dispatch(addProduct(finalValues))
-                        toast.success('Product add successfully.')
                         navigate('/all')
                     }}
                 >
@@ -106,7 +104,6 @@ const AddProductForm = () => {
                         <img src={file} alt='new file' width={400} height={400} />
                     </div>
                 }
-                <Toaster />
             </div>
         </div >
     );
