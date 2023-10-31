@@ -1,6 +1,12 @@
 import React from "react";
+import { RiDeleteBin2Line } from 'react-icons/ri'
+import { useDispatch } from "react-redux";
+import { allProduct, deleteProduct } from "../store/actions/productAction";
 
 const ListDown = ({ product }) => {
+    console.log("product", product?.id)
+    const dispatch = useDispatch();
+
     return (
         <React.Fragment>
             <div
@@ -9,11 +15,16 @@ const ListDown = ({ product }) => {
                     borderRadius: "15px",
                     flexGrow: 1,
                     flexBasis: 400,
-                    width: "31%",
+                    width: "300px",
                     margin: "20px",
                 }}
             >
                 <div style={{ padding: "10px" }}>
+                    <div onClick={() => {
+                        dispatch(deleteProduct(product?.id))
+                        dispatch(allProduct())
+
+                    }} style={{ textAlign: 'end', fontSize: '1.5rem', color: 'red', cursor: 'pointer' }}><RiDeleteBin2Line /></div>
                     <img
                         src={product?.image}
                         alt="new-image1"

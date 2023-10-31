@@ -4,33 +4,15 @@ import { allProduct } from "../store/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const ListDownPage = () => {
-    // const [data, setData] = useState([]);
     const dispatch = useDispatch();
-    // const listAllProduct = async () => {
-    //     const response = await fetch("http://localhost:8080/productData")
-    //     const responseData = await response.json()
-    //     setData(responseData)
-    // };
+
     const productResponse = useSelector((state) => state?.products?.productsAll)
     useEffect(() => {
-        // listAllProduct();
         dispatch(allProduct())
     }, []);
 
     return (
         <React.Fragment>
-            {/* <div className="product-title">
-                All Products
-            </div>
-            <div className="parent-list">
-                {
-                    data?.map((product) => {
-                        return (
-                            <ListDown product={product} />
-                        )
-                    })
-                }
-            </div> */}
             <div className="product-title">
                 Personal product List
             </div>

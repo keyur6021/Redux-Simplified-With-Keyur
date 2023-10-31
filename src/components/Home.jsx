@@ -14,6 +14,7 @@ const Home = () => {
         const responseData = await response.json()
         setData(responseData)
     };
+
     useEffect(() => {
         listAllProduct();
         dispatch(getAllPosts())
@@ -22,13 +23,10 @@ const Home = () => {
     return (
         <React.Fragment>
             <div className='header'>
-                All Users Imformations
+                All Product Imformations
             </div>
             <div className='sub-title'>
                 This is redux-structure App - <span className='name'>codeWithKeyur</span>
-            </div>
-            <div className="product-title">
-                All Products
             </div>
             <div className="parent-list">
                 {
@@ -43,6 +41,7 @@ const Home = () => {
             {/* <div style={{ margin: 15 }}>
                 <User />
             </div> */}
+            {/* //! post api for testing purpose */}
             <div className='btn-post' onClick={() => {
                 dispatch(postData({
                     name: 'keyur',

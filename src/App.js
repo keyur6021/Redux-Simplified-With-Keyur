@@ -9,7 +9,6 @@ import { Toaster } from 'react-hot-toast';
 import AddProductForm from './components/ProductForm';
 
 
-
 function App() {
   return (
     <div className="App">

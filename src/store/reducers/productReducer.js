@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { PRODUCT_ADD, PRODUCT_LIST } from "../actions/productAction";
+import { PRODUCT_ADD, PRODUCT_DELETE, PRODUCT_LIST } from "../actions/productAction";
 
 const initialState = {
     products: [],
@@ -22,6 +22,12 @@ export const productReducer = (state = initialState, action) => {
                 productsAll: action.payload
             }
 
+        case PRODUCT_DELETE:
+            toast.success('Product delete successfully.')
+            return {
+                ...state,
+                products: action.payload
+            }
 
         default:
             return state;
